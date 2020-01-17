@@ -37,9 +37,9 @@ class GoodsBloc extends Bloc<GoodsEvent, GoodsState> {
 
   Stream<GoodsState> _mapLoadGoodsToState() async* {
     try {
-      final goods = await this.goodsRepository.loadCart();
+      final goodsInCart = await this.goodsRepository.loadCart();
       yield GoodsLoaded(
-        goods.toList(),
+        goodsInCart.toList(),
       );
     } catch (_) {
       print('block exeption goods not loaded');
@@ -49,10 +49,10 @@ class GoodsBloc extends Bloc<GoodsEvent, GoodsState> {
 
   Stream<GoodsState> _mapAddGoodToState(AddGood event) async* {
     if (state is GoodsLoaded) {
-      final List<Good> updatedGoods = List.from((state as GoodsLoaded).goods)
-        ..add(event.good);
-      yield GoodsLoaded(updatedGoods);
-      _saveGoods(updatedGoods);
+      final List<CartItem> updatedGoodsInCart = List.from((state as GoodsLoaded).goodsInCart)
+        ..add(event.goodInCart);
+      yield GoodsLoaded(updatedGoodsInCart);
+      _saveGoods(updatedGoodsInCart);
     }
   }
 
@@ -68,16 +68,16 @@ class GoodsBloc extends Bloc<GoodsEvent, GoodsState> {
 
   Stream<GoodsState> _mapDeleteGoodToState(DeleteGood event) async* {
     if (state is GoodsLoaded) {
-      final updatedGoods = [
-        ...(state as GoodsLoaded).goods
+      final updatedGoodsInCart = [
+        ...(state as GoodsLoaded).goodsInCart
       ];
-      updatedGoods.removeAt(event.index);//(event.good);
+      updatedGoodsInCart.removeAt(event.index);//(event.good);
           //.where((good) => good.id != event.good.id)
           //.toList();
       // print('immutable: ');
       // print(updatedGoods == (state as GoodsLoaded).goods);
-      yield GoodsLoaded(updatedGoods);
-      _saveGoods(updatedGoods);
+      yield GoodsLoaded(updatedGoodsInCart);
+      _saveGoods(updatedGoodsInCart);
     }
   }
 
@@ -103,9 +103,9 @@ class GoodsBloc extends Bloc<GoodsEvent, GoodsState> {
   //   }
   // }
 
-  Future _saveGoods(List<Good> goods) {
+  Future _saveGoods(List<CartItem> goodsInCart) {
     return goodsRepository.saveCart(
-      goods.toList(),
+      goodsInCart.toList(),
     );
   }
 }

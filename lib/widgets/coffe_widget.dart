@@ -1,47 +1,44 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-//import 'package:todos_app_core/todos_app_core.dart';
-//import 'package:coffe/helper/localization.dart';
 import 'package:coffe/keys.dart';
-
 import 'package:coffe/widgets/cart_with_badge.dart';
 import 'package:coffe/widgets/coffe/coffe_list.dart';
 
-
-
-/*Future<Map <String, dynamic>> loadFilters() async {
-  Map <String, dynamic> filters;
-  try {
-    // in real app change api to 'coffe/'
-    final responce = await http.get("");    
-    if (responce.statusCode == 200) {
-      var jsonData = json.decode(responce.body);
-      for (var i in jsonData) {
-        var product = Coffe.fromJson(i);
-        print(product);
-        products.add(Coffe.fromJson(i));
-      } 
-      //debugPrint('from future products length ${products.length}');
-      return products;
-    } else {
-      throw HttpException('Failed to load with code ${responce.statusCode}');
-    }
-  } on SocketException {
-    throw FailureMessage('No Internet connection');
-  } on HttpException {
-    throw FailureMessage('Nothing found');
-  } on FormatException {
-    throw FailureMessage('Bad responce format');
-  } on Exception catch (e) {
-    debugPrint('error: ${e.toString()}');
-    throw FailureMessage('Unexpected error');
-  }
-}*/
+final dialogTextStyle = TextStyle(fontSize: 20, fontWeight: FontWeight.w700);
 
 class CoffeWidget extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+
   CoffeWidget({Key key}) 
     : super(key: key ?? CoffeAppKeys.coffeScreen);
+
+  Future<void> _beSoon(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          titleTextStyle: dialogTextStyle,
+          title: Text('Not implemented yet', textAlign: TextAlign.center),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Implemented soon this feature will be...'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Ok'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +77,7 @@ class CoffeWidget extends StatelessWidget {
                   textColor: Colors.black,
                   shape: RoundedRectangleBorder(side: BorderSide(color: Colors.black),borderRadius: BorderRadius.circular(5.0)),
                   onPressed: () {
-
+                    _beSoon(context);
                   },
                   child: Text('Multiple', textAlign: TextAlign.center),
                 )
@@ -217,8 +214,8 @@ class CoffeWidget extends StatelessWidget {
                 child: Text('Cancel', textAlign: TextAlign.center),
                 disabledColor: Colors.white10,
                 onPressed: () {
-                  scaffoldKey.currentState.openDrawer();
-                  //Navigator.pop();  
+                  //scaffoldKey.currentState.openDrawer();
+                  Navigator.of(scaffoldKey.currentContext).pop();  
                 },
               ),              
               FlatButton(

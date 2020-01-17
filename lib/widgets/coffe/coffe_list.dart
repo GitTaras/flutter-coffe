@@ -1,3 +1,4 @@
+import 'package:coffe/widgets/error/network_error.dart';
 import 'package:flutter/material.dart';
 import 'package:coffe/models/coffe.dart';
 import 'package:coffe/widgets/coffe/coffe_item.dart';
@@ -37,29 +38,10 @@ class _CoffeListState extends State<CoffeList> {
             widthFactor: .5,
             child: CircularProgressIndicator()
           ); 
-        } else if(snapshot.connectionState == ConnectionState.done) {
+        } 
+        if(snapshot.connectionState == ConnectionState.done) {
           if(snapshot.hasError) {
-            return Container(
-              color: Colors.greenAccent,
-              child: FractionallySizedBox(
-                widthFactor: .8,
-                heightFactor: .8,
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    CircleAvatar(
-                      backgroundColor: Colors.amber,
-                      minRadius: 25,
-                      child: Icon(Icons.error),
-                    ),
-                    Text('Error: ${snapshot.error.toString()}', softWrap: true, textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 25, color: Colors.red)),
-                  ],
-                  mainAxisSize: MainAxisSize.max,
-                )
-            ));
+            return NetworkError(widthFactor: .8, heigthFactor: .8, error: snapshot.error.toString());
           }
           if (snapshot.hasData) {
             print('snapshot has DATA');

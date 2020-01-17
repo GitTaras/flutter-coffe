@@ -4,15 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coffe/models/models.dart';
-import 'package:coffe/widgets/cart/cart_item.dart';
+import 'package:coffe/widgets/cart/cart_item_ui.dart';
 
 class CartScreen extends StatelessWidget {
   CartScreen({Key key}) : super(key: key);
 
-  double _getSum(List<Good> goods) {
-    double start = double.tryParse(goods[0].price.replaceAll("\$", ""));
+  double _getSum(List<CartItem> goods) {
+    int quantity = goods[0].goodsParams.quantity;
+    double price = double.tryParse(goods[0].good.price.replaceAll("\$", ""));
+    double start = quantity * price;
+    
     goods.skip(1).forEach((e) {
-      start += double.tryParse(e.price.replaceAll("\$", ""));
+      int quantity = e.goodsParams.quantity;
+      start += quantity * double.tryParse(e.good.price.replaceAll("\$", ""));
     });
     return start;
   }
@@ -25,9 +29,9 @@ class CartScreen extends StatelessWidget {
         title: Text("Cart", textAlign: TextAlign.center),
       ),
       body: BlocBuilder<GoodsBloc, GoodsState>(
-        builder: (context, goodsInCart) {
-          if (goodsInCart is GoodsLoaded && goodsInCart.goods.length > 0) {
-            final goods = goodsInCart.goods;
+        builder: (context, goodsState) {
+          if (goodsState is GoodsLoaded && goodsState.goodsInCart.length > 0) {
+            final goods = goodsState.goodsInCart;
             return Container(
               padding: const EdgeInsets.fromLTRB(14, 0, 14, 0),
               height: 700,
@@ -41,7 +45,7 @@ class CartScreen extends StatelessWidget {
                         separatorBuilder: (__, index) => Divider(height: 2,),
                         itemBuilder: (__, index) {
                           final item = goods[index];
-                          return CartItem(
+                          return CartItemUi(
                             onDismissed: (direction) {
                               BlocProvider.of<GoodsBloc>(__).add(DeleteGood(index));
                             },

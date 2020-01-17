@@ -11,7 +11,7 @@ class CartRepositoryFlutter {
     @required this.cartFileStorage,
   });
 
-  Future<List<Good>> loadCart() async {
+  Future<List<CartItem>> loadCart() async {
     try {
       return await cartFileStorage.loadCart();
     } catch (e) {
@@ -20,9 +20,9 @@ class CartRepositoryFlutter {
     }
   }
   
-  Future saveCart(List<Good> goods) async {
+  Future saveCart(List<CartItem> goodsInCart) async {
     try {
-      return await cartFileStorage.saveCart(goods);  
+      return await cartFileStorage.saveCart(goodsInCart);  
     } catch(e) {
       print('Unhandled exeption in saveCart e: ${e.toString()}');
     }

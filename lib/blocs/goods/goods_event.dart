@@ -11,15 +11,15 @@ abstract class GoodsEvent extends Equatable {
 class LoadGoods extends GoodsEvent {}
 
 class AddGood extends GoodsEvent {
-  final Good good;
+  final CartItem goodInCart;
 
-  const AddGood(this.good);
-
-  @override
-  List<Object> get props => [good];
+  const AddGood(this.goodInCart);
 
   @override
-  String toString() => 'AddGood { good: $good }';
+  List<Object> get props => [goodInCart];
+
+  @override
+  String toString() => 'AddGood { good: $goodInCart }';
 }
 
 class DeleteGood extends GoodsEvent {
@@ -55,8 +55,3 @@ class DeleteGood extends GoodsEvent {
   @override
   String toString() => 'UpdateTodo { updatedTodo: $updatedTodo }';
 }*/
-
-
-// class ClearCompleted extends TodosEvent {}
-
-// class ToggleAll extends TodosEvent {}

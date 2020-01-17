@@ -11,15 +11,15 @@ abstract class GoodsState extends Equatable {
 class GoodsLoading extends GoodsState {}
 
 class GoodsLoaded extends GoodsState {
-  final List<Good> goods;
+  final List<CartItem> goodsInCart;
 
-  const GoodsLoaded([this.goods = const []]);
-
-  @override
-  List<Object> get props => [goods];
+  const GoodsLoaded([this.goodsInCart = const []]);
 
   @override
-  String toString() => 'GoodsLoaded { goods: $goods }';
+  List<Object> get props => [goodsInCart];
+
+  @override
+  String toString() => 'GoodsLoaded { goods: $goodsInCart }';
 }
 
 class GoodsNotLoaded extends GoodsState {}

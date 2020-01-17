@@ -17,9 +17,9 @@ class CartWithBadge extends StatelessWidget {
           Navigator.pushNamed(context, "/cart");
         }),
         BlocBuilder<GoodsBloc, GoodsState>(
-          builder: (context, goodsInCart) {
-            if(goodsInCart is GoodsLoaded && goodsInCart.goods.length > 0) {
-            final goodsCount = goodsInCart.goods.length;
+          builder: (context, goodsState) {
+            if(goodsState is GoodsLoaded && goodsState.goodsInCart.length > 0) {
+            final goodsCount = goodsState.goodsInCart.length;
               return Positioned(
                 right: 11,
                 top: 11,

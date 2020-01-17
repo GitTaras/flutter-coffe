@@ -28,7 +28,9 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
     int quantity = int.tryParse(_controller.text);
     if (quantity != null && quantity > 0 && quantity < 99) {
       print("${widget.product}, $quantity");
-      BlocProvider.of<GoodsBloc>(context).add(AddGood(widget.product));
+      GoodsParams params = GoodsParams(quantity);
+      CartItem goodInCart = CartItem(widget.product, params);
+      BlocProvider.of<GoodsBloc>(context).add(AddGood(goodInCart));
       //widget.onAdd(widget.product, quantity);
     }
   }

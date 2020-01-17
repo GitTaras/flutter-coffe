@@ -6,12 +6,10 @@ import 'package:coffe/blocs/blocs.dart';
 
 //TODO 
 // change model to <Good good, int quantity, GoodParams params>
-// do bisness logic to result coast
 // separate widgets 400 colums it's to much
 // add filters
 // meke animation: checkbox, navigation, delete item in cart
-// issuise change behavior of back (low keyboard) button ?
-
+// issuise change behavior of back (low keyboard) button
 //https://www.youtube.com/watch?v=O8y7exDF8G8
 
 class Index {
@@ -120,9 +118,6 @@ class _CoffeFormState extends State<CoffeForm> {
   }
 
   void _nextStep() {
-    /*step == 1 ? setState(() {
-      step = 2;
-    }) : _addToCart(context);*///setState(() {step = 1;});
     setState(() {
       step = 2;
     });
@@ -154,7 +149,6 @@ class _CoffeFormState extends State<CoffeForm> {
     double weight = _mapSelectedWeight[weightIndex.index];
     double price = double.tryParse(widget.coffe.price.replaceAll("\$", ""));
     print("${price}");
-    //double price = double.tryParse(widget.coffe.price.replaceAll(new RegExp("\$"), ""));
 
     return price * quantity * weight + _getRoastCoast(weight * quantity);
   }
