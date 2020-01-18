@@ -13,7 +13,6 @@ class CartWithBadge extends StatelessWidget {
     return Stack(
       children: <Widget>[
         IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {
-          // todo navigate to cart just new screen
           Navigator.pushNamed(context, "/cart");
         }),
         BlocBuilder<GoodsBloc, GoodsState>(
@@ -34,7 +33,7 @@ class CartWithBadge extends StatelessWidget {
                     minHeight: 14,
                   ),
                   child: Text(
-                    '${goodsCount}',
+                    '$goodsCount',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 8,

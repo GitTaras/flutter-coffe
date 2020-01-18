@@ -39,11 +39,11 @@ class GoodsParams {
 
   factory GoodsParams.fromJson(Map<String, dynamic> json) => GoodsParams(
       json["quantity"] as int,
-      packing: json["packing"].toDouble(),
-      coffeType: json["coffeType"],
-      color: json["color"],
-      roast: json["roast"],
-      brewingMethod: json["brewingMethod"],
+      packing: json["packing"] as double,
+      coffeType: json["coffeType"] as String,
+      color: json["color"] as String,
+      roast: json["roast"] as String,
+      brewingMethod: json["brewingMethod"] as String, 
   );
 
   Map<String, dynamic> toJson() => {

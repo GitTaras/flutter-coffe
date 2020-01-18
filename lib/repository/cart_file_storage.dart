@@ -3,11 +3,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:coffe/models/models.dart';
 
-/// Loads and saves a List of Todos using a text file stored on the device.
-///
-/// Note: This class has no direct dependencies on any Flutter dependencies.
-/// Instead, the `getDirectory` method should be injected. This allows for
-/// testing.
+/// Loads and saves a List of CartItems using a text file stored on the device.
+
 class CartFileStorage {
   final String tag;
   final Future<Directory> Function() getDirectory;

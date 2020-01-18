@@ -35,21 +35,4 @@ class CartItem extends Equatable {
     "good": good.toJson(),
     "goodsParams": goodsParams.toJson() 
   };
-
-  // static CartItem fromJson(Map<String, Object> json) {
-  //   return CartItem(
-  //     json["_id"] as String,
-  //     json["isActive"] as bool,
-  //     json["price"] as String,
-  //     json["picture"] as String, 
-  //     company: json["company"] as String,
-  //     email: json["email"] as String,
-  //     about: json["about"] as String,
-  //     name : json["name"] as String,  
-  //     cornType : json["cornType"] as String,
-  //     taste : json["taste"] as String,
-  //     originGeography : json["originGeography"] as String,
-  //     region : json["region"] as String,
-  //   );
-  // }
 }
