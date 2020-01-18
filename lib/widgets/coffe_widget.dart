@@ -1,10 +1,9 @@
+import 'package:coffe/widgets/dialogs/not_implemented.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:coffe/keys.dart';
 import 'package:coffe/widgets/cart_with_badge.dart';
 import 'package:coffe/widgets/coffe/coffe_list.dart';
-
-final dialogTextStyle = TextStyle(fontSize: 20, fontWeight: FontWeight.w700);
 
 class CoffeWidget extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -17,25 +16,7 @@ class CoffeWidget extends StatelessWidget {
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
-        return AlertDialog(
-          titleTextStyle: dialogTextStyle,
-          title: Text('Not implemented yet', textAlign: TextAlign.center),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('Implemented soon this feature will be...'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('Ok'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
+        return NotImplemented();
       },
     );
   }

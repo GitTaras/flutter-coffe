@@ -13,8 +13,6 @@ import 'package:coffe/blocs/blocs.dart';
 // add filters
 // meke animation: checkbox, navigation, delete item in cart
 // issuise change behavior of back (low keyboard) button
-//https://www.youtube.com/watch?v=O8y7exDF8G8
-
 class Index {
   int index;
   Index(int index) {
@@ -86,7 +84,7 @@ class _CoffeFormState extends State<CoffeForm> {
     );
 
     //TODO make one model
-    //don't do this newer again)) Good.fromJson(widget.coffe.toJson())  
+    //don't do this sheet newer again)) Good.fromJson(widget.coffe.toJson())  
     CartItem cartItem = CartItem(Good.fromJson(widget.coffe.toJson()), params);
     print("added $cartItem.toString()");
     
