@@ -1,4 +1,3 @@
-import 'package:coffe/keys.dart';
 import 'package:coffe/models/models.dart';
 import 'package:flutter/material.dart';
 
@@ -23,8 +22,12 @@ class CartItemUi extends StatelessWidget {
     return Dismissible(
         key: UniqueKey(),  //CoffeAppKeys.cartItem(item.id),
         onDismissed: onDismissed,
+        background: Container(
+          padding: EdgeInsets.only(left: 270),
+          color: Colors.orange[800],
+          child: Icon(Icons.cancel),
+        ),
         direction: DismissDirection.endToStart,
-        // todo https://www.youtube.com/watch?v=iEMgjrfuc58
         child: Container(
         margin: EdgeInsets.only(top: 4, bottom: 8),
         child: Row(
@@ -38,7 +41,22 @@ class CartItemUi extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Text("${item.good.company}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24), softWrap: true,),
+                  Text("${item.good.company ?? item.good.name}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24), softWrap: true,),
+                  if (item.good.name != null) 
+                    ...[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text("Brewing method: ${item.goodsParams.brewingMethod}", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300, color: Colors.grey[300])),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text("Coffe type: ${item.goodsParams.coffeType}", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300, color: Colors.grey[300])),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: Text("Packing: ${item.goodsParams.packing.toString()} kg", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300, color: Colors.grey[300])),
+                      ),
+                    ],  
                   // Padding(
                   //   padding: const EdgeInsets.only(bottom: 8.0),
                   //   child: Text("${item.good.about ?? ""}", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300, color: Colors.grey[300])),
@@ -47,7 +65,6 @@ class CartItemUi extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 8.0),
                     child: Text("Quantity: ${item.goodsParams.quantity}", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300, color: Colors.grey[300])),
                   ),
-                  //Text("Quantity: ${item.quantity}", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w300, color: Colors.grey[300])),
                 ],
               ),
             ),
@@ -56,7 +73,7 @@ class CartItemUi extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Text("${_getPrice()} \$", style: TextStyle(fontWeight: FontWeight.w600)),
-                IconButton(icon: Icon(Icons.more_vert),onPressed: () {},),
+                //IconButton(icon: Icon(Icons.more_vert),onPressed: () {},),
               ],
             ),
           ],

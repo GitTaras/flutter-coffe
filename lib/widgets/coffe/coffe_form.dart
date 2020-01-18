@@ -1,11 +1,14 @@
+import 'package:coffe/models/cart_item.dart';
 import 'package:coffe/models/coffe.dart';
+import 'package:coffe/models/good.dart';
+import 'package:coffe/models/goods_params.dart';
+import 'package:coffe/widgets/dialogs/not_available_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:coffe/widgets/cart_with_badge.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coffe/blocs/blocs.dart';
 
 //TODO 
-// change model to <Good good, int quantity, GoodParams params>
 // separate widgets 400 colums it's to much
 // add filters
 // meke animation: checkbox, navigation, delete item in cart
@@ -75,13 +78,19 @@ class _CoffeFormState extends State<CoffeForm> {
     double weight = _mapSelectedWeight[weightIndex.index];
     String coffeType = _mapSelectedCoffeType[coffeTypeIndex.index];
     String roast = _mapSelectedRoast[roastIndex.index];
-    Map <String, String> productParams = {
-      "packing": weight.toString(), "coffe type": coffeType, "color": color,
-      "roast": roast, "brewing method": _brewingMethod, "quantity": _quantityController.text 
-    };
-    print("added $productParams.toString()");
+    int quantity = int.tryParse(_quantityController.text);
+    GoodsParams params = GoodsParams(
+      quantity, packing: weight,
+      coffeType: coffeType, color: color,
+      roast: roast, brewingMethod: _brewingMethod
+    );
+
+    //TODO make one model
+    //don't do this newer again)) Good.fromJson(widget.coffe.toJson())  
+    CartItem cartItem = CartItem(Good.fromJson(widget.coffe.toJson()), params);
+    print("added $cartItem.toString()");
     
-    // BlocProvider.of<GoodsBloc>(context).add(AddGood(widget.product));
+    BlocProvider.of<GoodsBloc>(context).add(AddGood(cartItem));
   }
 
   @override
@@ -190,6 +199,16 @@ class _CoffeFormState extends State<CoffeForm> {
     ];
   }
 
+  Future<void> _notAvailable(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) =>
+        NotAvailableAlert(),
+    );
+  }
+  
+
   Widget _buildRadioListTile(
     String itemTitle, String itemValue, String currentValue,
     ValueChanged<String> onChanged, {
@@ -203,8 +222,8 @@ class _CoffeFormState extends State<CoffeForm> {
       secondary: !enabled ? IconButton(
         icon: Icon(Icons.info),
         onPressed: () {
-          print("me pressed");
-        },
+          _notAvailable(context);
+        }
       ) : null
     );
   }
@@ -354,18 +373,18 @@ class _CoffeFormState extends State<CoffeForm> {
     return ListView(children: step == 1 ? _firstPart() : _secondPart());
   }
 
-  void _prevStepOrPop(BuildContext context) {
-    if(step == 1) {
-      if(Navigator.of(context).canPop()) {
-        Navigator.of(context).pop();
-      }
-      return;
-    } 
+  // void _prevStepOrPop(BuildContext context) {
+  //   if(step == 1) {
+  //     if(Navigator.of(context).canPop()) {
+  //       Navigator.of(context).pop();
+  //     }
+  //     return;
+  //   } 
 
-    setState(() {
-      step = 1;
-    });
-  }
+  //   setState(() {
+  //     step = 1;
+  //   });
+  // }
 
   Widget _myBackButton() {
     if(step == 1) {
