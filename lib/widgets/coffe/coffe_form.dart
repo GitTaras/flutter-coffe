@@ -8,11 +8,6 @@ import 'package:coffe/widgets/cart_with_badge.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coffe/blocs/blocs.dart';
 
-//TODO 
-// separate widgets 400 colums it's to much
-// add filters
-// meke animation: checkbox, navigation, delete item in cart
-// issuise change behavior of back (low keyboard) button
 class Index {
   int index;
   Index(int index) {
@@ -200,7 +195,7 @@ class _CoffeFormState extends State<CoffeForm> {
   Future<void> _notAvailable(BuildContext context) async {
     return showDialog<void>(
       context: context,
-      barrierDismissible: false, // user must tap button!
+      barrierDismissible: false,
       builder: (BuildContext context) =>
         NotAvailableAlert(),
     );
@@ -371,19 +366,6 @@ class _CoffeFormState extends State<CoffeForm> {
     return ListView(children: step == 1 ? _firstPart() : _secondPart());
   }
 
-  // void _prevStepOrPop(BuildContext context) {
-  //   if(step == 1) {
-  //     if(Navigator.of(context).canPop()) {
-  //       Navigator.of(context).pop();
-  //     }
-  //     return;
-  //   } 
-
-  //   setState(() {
-  //     step = 1;
-  //   });
-  // }
-
   Widget _myBackButton() {
     if(step == 1) {
       if(Navigator.of(context).canPop()) {
@@ -405,8 +387,6 @@ class _CoffeFormState extends State<CoffeForm> {
   Widget build(BuildContext context) {
     print("Building form");
     Size size = MediaQuery.of(context).size;
-    //final Coffe coffe = ModalRoute.of(context).settings.arguments;
-    //print("coffe: $coffe");
     return Scaffold(
       appBar: AppBar(
         leading: _myBackButton(),
@@ -422,10 +402,8 @@ class _CoffeFormState extends State<CoffeForm> {
           children: <Widget>[
             Expanded(child: _formBuilder()),
             Container(
-              //deleting height breaks layout  
-              // todo use relative size based on media query
+              //deleting height will breaks layout  
               height: size.height * 0.15,
-              //height: 100,
               child: Column(
               mainAxisSize: MainAxisSize.min,  
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -453,8 +431,7 @@ class _CoffeFormState extends State<CoffeForm> {
                     flex: 7,
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
-                          //side: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.circular(5.0)),
+                      borderRadius: BorderRadius.circular(5.0)),
                       onPressed: () {
                         step ==1 ? _nextStep() : _addToCart(context);
                       }, 

@@ -83,11 +83,10 @@ class CartScreen extends StatelessWidget {
                           Expanded(
                             flex: 7,
                             child: RaisedButton(
-                            shape: RoundedRectangleBorder(
-                                //side: BorderSide(color: Colors.black),
-                                borderRadius: BorderRadius.circular(5.0)),
-                            onPressed: () {},
-                            child: Text("Buy"),
+                              shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                              onPressed: () {},
+                              child: Text("Buy"),
                           ))
                         ],
                       ),
