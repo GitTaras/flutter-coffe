@@ -20,7 +20,7 @@ class CartItemUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-        key: UniqueKey(),  //CoffeAppKeys.cartItem(item.id),
+        key: UniqueKey(),
         onDismissed: onDismissed,
         background: Container(
           padding: EdgeInsets.only(left: 270),

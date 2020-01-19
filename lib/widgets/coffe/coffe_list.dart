@@ -17,13 +17,11 @@ class _CoffeListState extends State<CoffeList> {
   @override
   void initState() { 
     super.initState();
-    //debugPrint("init coffe");
     coffeList = loadCoffe();
   }
 
   @override
   void dispose() {
-    //debugPrint("dispose");
     super.dispose();
   }
 

@@ -4,12 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:coffe/blocs/blocs.dart';
 
 class CartWithBadge extends StatelessWidget {
-  // final int count;
-  CartWithBadge({Key key, /*@required this.count*/}) : super(key: key);
+  CartWithBadge({Key key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
-    // print('badge count ${this.count}');  
     return Stack(
       children: <Widget>[
         IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {

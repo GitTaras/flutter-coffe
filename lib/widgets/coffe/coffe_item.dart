@@ -28,7 +28,6 @@ class CoffeItem extends StatelessWidget {
               builder: (BuildContext context) => CoffeForm(coffe: item)
             )
           );
-          //Navigator.pushNamed(context, "/form", arguments: item);
         },
       ),
       children: <Widget>[

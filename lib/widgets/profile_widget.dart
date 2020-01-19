@@ -16,7 +16,6 @@ class ProfileWidget extends StatelessWidget {
       appBar: AppBar(
         title: Text(
             'My profile',
-            // style: Theme.of(context).primaryTextTheme.title,
           ),
         centerTitle: true,
         actions: <Widget>[
@@ -82,55 +81,6 @@ class ProfileWidget extends StatelessWidget {
           ],
         ),
       )
-    );
-  }
-}
-
-
-// return Column(
-//       children: <Widget>[
-//         MyAppBar(
-//           title: 
-//         ),
-//         Expanded(
-          
-//         ),
-//       ],
-//     );
-
-class MyAppBar extends StatelessWidget {
-  MyAppBar({this.title});
-
-  final Widget title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 56.0, // in logical pixels
-      //padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      decoration: BoxDecoration(color: Colors.black),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          /*IconButton(
-            icon: Icon(Icons.menu),
-            tooltip: 'Navigation menu',
-            onPressed: null, // null disables the button
-          ),*/
-          // Expanded expands its child to fill the available space.
-          Expanded(
-            flex: 1,
-            child: Center(
-              child: title,
-            )
-          ),
-          IconButton(
-            icon: Icon(Icons.card_giftcard),
-            tooltip: 'Cart',
-            onPressed: () {},
-          ),
-        ],
-      ),
     );
   }
 }

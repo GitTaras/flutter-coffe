@@ -55,11 +55,7 @@ class GoodsBloc extends Bloc<GoodsEvent, GoodsState> {
       final updatedGoodsInCart = [
         ...(state as GoodsLoaded).goodsInCart
       ];
-      updatedGoodsInCart.removeAt(event.index);//(event.good);
-          //.where((good) => good.id != event.good.id)
-          //.toList();
-      // print('immutable: ');
-      // print(updatedGoods == (state as GoodsLoaded).goods);
+      updatedGoodsInCart.removeAt(event.index);
       yield GoodsLoaded(updatedGoodsInCart);
       _saveGoods(updatedGoodsInCart);
     }

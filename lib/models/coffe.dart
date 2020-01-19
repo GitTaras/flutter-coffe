@@ -1,4 +1,3 @@
-//todo make price int or float parse $ before price
 class Coffe {
   final String _id;
   final bool isActive;

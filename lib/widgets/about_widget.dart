@@ -29,7 +29,6 @@ class AboutWidget extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        // title: Text(localizations.todoDetails),
         title: Text('About'),
         centerTitle: true,
       ),

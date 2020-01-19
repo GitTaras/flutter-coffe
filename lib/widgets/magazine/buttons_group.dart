@@ -31,7 +31,6 @@ class _ButtonsGroupState extends State<ButtonsGroup> {
       GoodsParams params = GoodsParams(quantity);
       CartItem goodInCart = CartItem(widget.product, params);
       BlocProvider.of<GoodsBloc>(context).add(AddGood(goodInCart));
-      //widget.onAdd(widget.product, quantity);
     }
   }
 
