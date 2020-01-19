@@ -2,6 +2,13 @@
 
 A new Flutter project.
 
+This project is in process.
+
+To setup:
+  -[install flutter](https://flutter.dev/docs/get-started/install)
+  -run flutter pub get
+  -run app (flutter run --debug or flutter run --release)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
