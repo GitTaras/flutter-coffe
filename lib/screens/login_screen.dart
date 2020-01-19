@@ -102,11 +102,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   key: CoffeAppKeys.loginSreenLoginWithFbButton,
                   child: Text('Login with Facebook'),
                   onPressed: () {
-                    AlertDialog(
-                      title: Text("Not impemented"),
-                      content: Text("This is comming soon..."),
-                      contentPadding: EdgeInsets.all(25.0),
-                    );
                     print('login with Facebook:\n');
                   },
                 ),

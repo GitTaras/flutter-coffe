@@ -32,26 +32,4 @@ class DeleteGood extends GoodsEvent {
 
   @override
   String toString() => 'DeleteGood { index: $index }';  
-  
-  //final Good good;
-
-  //const DeleteGood(this.good);
-
-  // @override
-  // List<Object> get props => [good];
-
-  // @override
-  // String toString() => 'DeleteGood { good: $good }';
 }
-
-/*class UpdateTodo extends TodosEvent {
-  final Todo updatedTodo;
-
-  const UpdateTodo(this.updatedTodo);
-
-  @override
-  List<Object> get props => [updatedTodo];
-
-  @override
-  String toString() => 'UpdateTodo { updatedTodo: $updatedTodo }';
-}*/

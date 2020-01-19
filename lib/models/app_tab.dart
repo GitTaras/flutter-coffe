@@ -1,1 +1,1 @@
-enum AppTab { todos, stats, coffe, profile, magazine, about }
+enum AppTab { coffe, profile, magazine, about }

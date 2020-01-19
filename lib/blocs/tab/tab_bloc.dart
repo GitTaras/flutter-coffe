@@ -5,7 +5,7 @@ import 'package:coffe/models/models.dart';
 
 class TabBloc extends Bloc<TabEvent, AppTab> {
   @override
-  AppTab get initialState => AppTab.todos;
+  AppTab get initialState => AppTab.coffe;
 
   @override
   Stream<AppTab> mapEventToState(TabEvent event) async* {

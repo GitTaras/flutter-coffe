@@ -24,15 +24,9 @@ class GoodsBloc extends Bloc<GoodsEvent, GoodsState> {
       yield* _mapLoadGoodsToState();
     } else if (event is AddGood) {
       yield* _mapAddGoodToState(event);
-    } /*else if (event is UpdateTodo) {
-      yield* _mapUpdateTodoToState(event);
-    }*/ else if (event is DeleteGood) {
+    }  else if (event is DeleteGood) {
       yield* _mapDeleteGoodToState(event);
-    }/* else if (event is ToggleAll) {
-      yield* _mapToggleAllToState();
-    } else if (event is ClearCompleted) {
-      yield* _mapClearCompletedToState();
-    }*/
+    }
   }
 
   Stream<GoodsState> _mapLoadGoodsToState() async* {
@@ -56,16 +50,6 @@ class GoodsBloc extends Bloc<GoodsEvent, GoodsState> {
     }
   }
 
-  // Stream<TodosState> _mapUpdateTodoToState(UpdateTodo event) async* {
-  //   if (state is TodosLoaded) {
-  //     final List<Todo> updatedTodos = (state as TodosLoaded).todos.map((todo) {
-  //       return todo.id == event.updatedTodo.id ? event.updatedTodo : todo;
-  //     }).toList();
-  //     yield TodosLoaded(updatedTodos);
-  //     _saveTodos(updatedTodos);
-  //   }
-  // }
-
   Stream<GoodsState> _mapDeleteGoodToState(DeleteGood event) async* {
     if (state is GoodsLoaded) {
       final updatedGoodsInCart = [
@@ -80,28 +64,6 @@ class GoodsBloc extends Bloc<GoodsEvent, GoodsState> {
       _saveGoods(updatedGoodsInCart);
     }
   }
-
-  // Stream<TodosState> _mapToggleAllToState() async* {
-  //   if (state is TodosLoaded) {
-  //     final allComplete =
-  //         (state as TodosLoaded).todos.every((todo) => todo.complete);
-  //     final List<Todo> updatedTodos = (state as TodosLoaded)
-  //         .todos
-  //         .map((todo) => todo.copyWith(complete: !allComplete))
-  //         .toList();
-  //     yield TodosLoaded(updatedTodos);
-  //     _saveTodos(updatedTodos);
-  //   }
-  // }
-
-  // Stream<TodosState> _mapClearCompletedToState() async* {
-  //   if (state is TodosLoaded) {
-  //     final List<Todo> updatedTodos =
-  //         (state as TodosLoaded).todos.where((todo) => !todo.complete).toList();
-  //     yield TodosLoaded(updatedTodos);
-  //     _saveTodos(updatedTodos);
-  //   }
-  // }
 
   Future _saveGoods(List<CartItem> goodsInCart) {
     return goodsRepository.saveCart(

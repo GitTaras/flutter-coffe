@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:coffe/keys.dart';
-//import 'package:coffe/helper/localization.dart';
-//import 'package:todos_app_core/todos_app_core.dart';
 import 'package:coffe/models/models.dart';
 
 class TabSelector extends StatelessWidget {
@@ -28,22 +26,7 @@ class TabSelector extends StatelessWidget {
             _getIcon(tab),
             key: _getTabKey(tab),
           ),
-          // title: Text(tab == AppTab.stats
-          //     ? ArchSampleLocalizations.of(context).stats
-          //     : ArchSampleLocalizations.of(context).todos),
           title: Text(_getTabText(tab)),
-          // onPressed: () {
-          //   Navigator.pushNamed(context, CoffeAppRoutes.addTodo);
-          // },
-          // icon: Icon(
-          //   tab == AppTab.todos ? Icons.list : Icons.show_chart,
-          //   key: tab == AppTab.todos
-          //       ? CoffeAppKeys.todoTab
-          //       : CoffeAppKeys.statsTab,
-          // ),
-          // title: Text(tab == AppTab.stats
-          //     ? ArchSampleLocalizations.of(context).stats
-          //     : ArchSampleLocalizations.of(context).todos),
         );
       }).toList(),
     );
@@ -51,10 +34,6 @@ class TabSelector extends StatelessWidget {
 
   String _getTabText(AppTab tab) {
     switch(tab) {
-      case AppTab.todos:
-        return 'todos';
-      case AppTab.stats:
-        return 'stats';
       case AppTab.coffe:
         return 'coffe';
       case AppTab.profile:
@@ -70,10 +49,6 @@ class TabSelector extends StatelessWidget {
 
   Key _getTabKey(AppTab tab) {
     switch(tab) {
-      case AppTab.todos:
-        return CoffeAppKeys.todoTab;
-      case AppTab.stats:
-        return CoffeAppKeys.statsTab;
       case AppTab.coffe:
         return CoffeAppKeys.coffeTab;
       case AppTab.profile:
@@ -89,10 +64,6 @@ class TabSelector extends StatelessWidget {
 
   IconData _getIcon(AppTab tab) {
     switch(tab) {
-      case AppTab.todos:
-        return Icons.list;
-      case AppTab.stats:
-        return Icons.show_chart;
       case AppTab.coffe:
         return Icons.business;
       case AppTab.profile:

@@ -1,12 +1,5 @@
-export 'extra_action.dart';
-export 'filter_button.dart';
 export 'tab_selector.dart';
-export 'filtered_todos.dart';
-export 'todo_item.dart';
-export 'delete_todo_snack_bar.dart';
 export 'loading_indicator.dart';
-export 'stats.dart';
 export './about_widget.dart';
 export './profile_widget.dart';
-//export './magazine_widget.dart';
 export './coffe_widget.dart';
